@@ -618,13 +618,13 @@
                 const valueElement = targetElement.closest("[data-quantity]").querySelector("[data-quantity-value]");
                 let value = parseInt(valueElement.value);
                 if (targetElement.hasAttribute("data-quantity-plus")) {
-                    value++;
+                    value += 100;
                     if (+valueElement.dataset.quantityMax && +valueElement.dataset.quantityMax < value) value = valueElement.dataset.quantityMax;
                 } else {
-                    --value;
+                    value -= 100;
                     if (+valueElement.dataset.quantityMin) {
                         if (+valueElement.dataset.quantityMin > value) value = valueElement.dataset.quantityMin;
-                    } else if (value < 1) value = 1;
+                    } else if (value < 1) value = 100;
                 }
                 targetElement.closest("[data-quantity]").querySelector("[data-quantity-value]").value = value;
             }
